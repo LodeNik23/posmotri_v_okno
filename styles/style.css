@@ -8,22 +8,6 @@ html {
   block-size: 100%;
 }
 
-.page {
-  display: flex;
-
-  align-items: center;
-
-  /* justify-content: center; 1 */
-
-  inline-size: 1200px;
-  block-size: 100%;
-  margin: auto;
-  color: #fff;
-  font-family: "Fira Sans Condensed", sans-serif;
-  font-size: 18px;
-  background-color: #1b1919;
-}
-
 h1,
 h2,
 h3,
@@ -44,12 +28,28 @@ ol {
   list-style: none;
 }
 
+.page {
+  display: flex;
+  align-items: center;
+
+  /* justify-content: center; 1 */
+
+  inline-size: 1200px;
+  block-size: 100%;
+  margin: auto;
+  color: #fff;
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 18px;
+  background-color: #1b1919;
+}
+
 .content {
   display: flex;
-  justify-content: flex-end;
   align-items: end; /*  center*/
   gap: 30px;
-  height: 534px;
+  margin: 0 auto;
+  /*  height: 534px; 
+  justify-content: flex-end; */
 }
 
 .result {
@@ -92,7 +92,7 @@ ol {
   display: flex;
   align-items: centerflex-end;
   justify-content: space-between;
-  height: 54px;
+  /*  height: 54px; */
 }
 
 .search-form__fieldset {
@@ -105,7 +105,7 @@ ol {
 
 .search-form__fieldset-title {
   color: #fff;
-  font-family: Fira Sans Condensed;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -123,19 +123,20 @@ ol {
 /*поле ввода в стандарте*/
 
 .search-form__textfield {
-  color: rgba(255, 255, 255, 0.7);
-  font-family: Fira Sans Condensed;
+  /* color: rgba(255, 255, 255, 0.7); значение по образцу из Фигмы */
+  color: #fff; /* значение по ревью */
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  width: 225px;
   outline: none;
   background-color: transparent;
-  height: 27px;
+  min-width: 225px;
+  min-height: 27px;
   border: none;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #fff;
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -146,18 +147,20 @@ ol {
 
 .search-form__textfield:active {
   outline: 1px solid #fff;
-  padding: -1px 0px 0px 0px;
+  outline-offset: -1px;
+  /* padding: -1px 0px 0px 0px; */
 }
 
 /*при наведении курсора на все*/
 
 .search-form__label:hover :not(.search-form__textfield) {
   text-decoration: underline 1px #fff;
+  text-underline-offset: 1px;
 }
 
 /*выделение tab*/
 
-.search-form__label:has(:focus-visible) {
+.search-form__label:has(:focus-visible) :not(.search-form__textfield) {
   outline: 1px solid #fff;
   outline-offset: 1px;
 }
@@ -203,9 +206,9 @@ ol {
 }
 
 .button {
-  border: 1px solid #fff;
+  border: 1px solid currentColor;
   color: #fff;
-  font-family: Fira Sans Condensed;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 700;
   font-size: 18px;
   background-color: transparent;
@@ -243,7 +246,6 @@ ol {
 /*правая колонка */
 
 .content__details {
-  width: 399px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -254,19 +256,18 @@ ol {
   position: relative;
   height: 100%;
   color: #fff;
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
   font-size: 75px;
   font-style: normal;
   font-weight: 700;
   line-height: 94%; /* 70.5px */
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 21px;
   /*  margin-bottom: 26px; */ /*по инстроукции 26, по PP - 24*/
 }
 
 .content__accent {
   color: #545050;
-  position: relative;
 }
 
 .content__list {
@@ -275,18 +276,14 @@ ol {
   width: 399px;
   height: 298px;
   overflow-y: auto;
+  overflow-x: hidden; /* добавлен после включения отображения скролов */
   position: relative;
   padding: 2px;
 }
 
-.content__list::-webkit-scrollbar {
+/* .content__list::-webkit-scrollbar {
   display: none;
-}
-
-.cards-list-item-template {
-  display: flex;
-  flex-direction: column;
-}
+} */ /*на образце скрол не отображается*/
 
 .content__list-item:not(:last-child) {
   margin-bottom: 30px;
@@ -330,7 +327,7 @@ ol {
 }
 
 .content__video-card-title {
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
@@ -338,24 +335,29 @@ ol {
   text-transform: uppercase;
   margin-bottom: 6px;
   padding: 0px 2px 0px 0px;
-  hyphens: auto;
+  /* hyphens: auto; свойство было добавлено для длинных названий городов */
 }
 
 .content__video-card-description {
   color: #fff;
-  font-family: Fira Sans Condensed;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 16.2px; /* 90% */
   padding: 0px 0px 1px 0px;
-  max-height: 65px;
-  overflow-y: auto;
+  /*max-height: 65px; при наличии скрола для описания позволяет создать систематизированную структуру страницы с одинаковыми полями*/
+  /* overflow-y: auto; */
 }
 
-.content__video-card-description::-webkit-scrollbar {
+/* .content__video-card-description::-webkit-scrollbar {
   display: none;
-}
+} 
+
+необходимость скрола не прописана в задании. скрол добавлен для корректного 
+отображения описания избольшого кол-ва слов. 
+Так как в данной сборке описания короткие в .content__video-card-description 
+выключено  overflow-y: auto; */
 
 .content__video-card-thumbnail {
   height: 103px;
